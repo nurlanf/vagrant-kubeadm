@@ -17,7 +17,7 @@ Vagrant.configure("2") do |config|
 
   # Ubuntu VM
   config.vm.box = "generic/ubuntu1810"
-  config.vm.provision :shell, :privileged => false, :path => "bootstrap_all.sh"
+  config.vm.provision :shell, :privileged => true, :path => "bootstrap_all.sh"
   config.vm.network "private_network", type: "dhcp"
 
   config.vm.define "kube-master" do |node|
