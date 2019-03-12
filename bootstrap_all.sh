@@ -4,9 +4,9 @@ sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 echo net/bridge/bridge-nf-call-ip6tables = 1 >> /etc/ufw/sysctl.conf
 echo net/bridge/bridge-nf-call-iptables = 1 >> /etc/ufw/sysctl.conf
 echo net/bridge/bridge-nf-call-arptables = 1 >> /etc/ufw/sysctl.conf
-apt update
-apt remove docker docker-engine docker.io containerd runc
-apt install -y \
+apt-get update
+apt-get remove docker docker-engine docker.io containerd runc
+apt-get install -y \
 apt-transport-https \
 ca-certificates \
 curl \
@@ -17,12 +17,12 @@ add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
    $(lsb_release -cs) \
    stable"
-apt update
-apt install -y docker-ce docker-ce-cli containerd.io
+apt-get update
+apt-get install -y docker-ce docker-ce-cli containerd.io
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
 deb http://apt.kubernetes.io/ kubernetes-xenial main
 EOF
-apt update
-apt install -y kubelet kubeadm kubectl
+apt-get update
+apt-get install -y kubelet kubeadm kubectl
 
