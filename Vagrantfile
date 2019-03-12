@@ -23,7 +23,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "kube-master" do |node|
     node.vm.hostname = "kube-master"
     node.vm.box = "generic/ubuntu1810"
-    node.vm.provision :shell, :path => "bootstrap_master.sh"
+    node.vm.provision :shell, :privileged => true, :path => "bootstrap_master.sh"
     #node.vm.synced_folder '.', '/vagrant', :disabled => true
   end
   config.vm.define "kube-node1" do |node|
