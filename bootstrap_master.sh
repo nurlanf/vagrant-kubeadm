@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-NODENAME=$(hostname -s)
-kubeadm init --pod-network-cidr=192.168.0.0/16 --token qnq2lo.v0acaocjegmzf06c --node-name $NODENAME
+kubeadm init --pod-network-cidr=192.168.0.0/16 --token qnq2lo.v0acaocjegmzf06c --node-name kube-master
 sudo --user=vagrant mkdir -p /home/vagrant/.kube
 cp -i /etc/kubernetes/admin.conf /home/vagrant/.kube/config
 chown $(id -u vagrant):$(id -g vagrant) /home/vagrant/.kube/config
