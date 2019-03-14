@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 echo "Deploying Vagrant machines"
-vagrant up 2> /dev/null
+vagrant up
 vagrant status
 echo "Updating kubeconfig"
 vagrant ssh kube-master -- cat /home/vagrant/.kube/config > $HOME/.kube/config-vagrant
