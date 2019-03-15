@@ -1,6 +1,6 @@
 # Define Vagrant provider
 VAGRANT_PROVIDER="libvirt"
-
+NODE_SIZE=2
 # Define Master ip
 MASTER_IPADDR='192.168.50.4'
 

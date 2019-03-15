@@ -22,7 +22,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "kube-master" do |master|
     master.vm.hostname = "kube-master"
     master.vm.box = "generic/ubuntu1810"
-    master.vm.network "private_network", ip: "192.168.60.4"
+    master.vm.network "private_network", ip: \"$MASTER_IPADDR\"
     master.vm.provision :shell, :privileged => true, :path => "bootstrap_master.sh"
     #master.vm.synced_folder '.', '/vagrant', :disabled => true
   end
