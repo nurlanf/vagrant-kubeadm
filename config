@@ -1,4 +1,4 @@
-# Define Vagrant provider
+# Define Vagrant provider to "libvirt" or "virtualbox"
 VAGRANT_PROVIDER="libvirt"
 NODE_SIZE=2
 # Define Master ip
