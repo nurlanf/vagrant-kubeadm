@@ -1,5 +1,5 @@
 # Define Vagrant provider
-VAGRANT_DEFAULT_PROVIDER="libvirt"
+VAGRANT_PROVIDER="libvirt"
 
 # Define Master ip
 MASTER_IPADDR='192.168.50.4'
