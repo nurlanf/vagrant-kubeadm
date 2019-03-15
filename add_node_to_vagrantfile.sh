@@ -18,11 +18,11 @@ do
   lsv=$(( $lsv + 1 ))
   NODE_IPADDR=$baseaddr.$lsv
 echo "
-  config.vm.define "kube-node$NUM" do |node|
-    node.vm.hostname = "kube-node$NUM"
-    node.vm.network "private_network", ip: \"$NODE_IPADDR\"
-    node.vm.provision :shell, :privileged => true, :path => "bootstrap_node.sh"
-    node.vm.box = "generic/ubuntu1810"
+  config.vm.define \"kube-node$NUM\" do |node|
+    node.vm.hostname = \"kube-node$NUM\"
+    node.vm.network \"private_network\", ip: \"$NODE_IPADDR\"
+    node.vm.provision :shell, :privileged => true, :path => \"bootstrap_node.sh\"
+    node.vm.box = \"generic/ubuntu1810\"
     #node.vm.synced_folder '.', '/vagrant', :disabled => true
   end
 "
