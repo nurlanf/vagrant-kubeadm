@@ -18,7 +18,7 @@ do
   lsv=$(( $lsv + 1 ))
   NODE_IPADDR=$baseaddr.$lsv
 echo "
-  config.vm.define "kube-node1" do |node|
+  config.vm.define "kube-node$NUM" do |node|
     node.vm.hostname = "kube-node1"
     node.vm.network "private_network", ip: \"$NODE_IPADDR\"
     node.vm.provision :shell, :privileged => true, :path => "bootstrap_node.sh"
@@ -27,6 +27,7 @@ echo "
   end
 "
   count=$(( $count - 1 ))
+  NUM=$(($NUM + 1))
 done
 
 exit 0
