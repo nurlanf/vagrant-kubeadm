@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 source config
-echo "ENV['VAGRANT_DEFAULT_PROVIDER'] = \"$VAGRANT_PROVIDER\"" > Vagrantfile
+cat << EOF >> Vagrantfile
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+ENV['VAGRANT_DEFAULT_PROVIDER'] = \"$VAGRANT_PROVIDER\"
+EOF
 if [[ $VAGRANT_PROVIDER == libvirt ]];
 then
 cat << EOF >> Vagrantfile

@@ -32,7 +32,7 @@ Vagrant.configure("2") do |config|
 
 
   config.vm.define kube-node2 do |node|
-    node.vm.hostname = kube-node1
+    node.vm.hostname = kube-node2
     node.vm.network private_network, ip: "192.168.50.6"
     node.vm.provision :shell, :privileged => true, :path => bootstrap_node.sh
     node.vm.box = generic/ubuntu1810
