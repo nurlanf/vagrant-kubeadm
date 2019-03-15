@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 source config
-cat << EOF >> Vagrantfile
+cat << EOF > Vagrantfile
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
