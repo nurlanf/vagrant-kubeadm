@@ -42,7 +42,7 @@ echo "end" >> Vagrantfile;
 echo "Deploying Vagrant machines"
 vagrant up
 echo "Updating kubeconfig"
-vagrant ssh kube-master -- cat /home/vagrant/.kube/config > $HOME/.kube/config-vagrant
+vagrant ssh kube-master -- cat /home/vagrant/.kube/config > $HOME/.kube/config-vagrant &&
 
 export  KUBECONFIG=$KUBECONFIG:$HOME/.kube/config:$HOME/.kube/config-vagrant
 if ! grep -q 'export  KUBECONFIG=$KUBECONFIG:$HOME/.kube/config:$HOME/.kube/config-vagrant' $HOME/.bashrc;
