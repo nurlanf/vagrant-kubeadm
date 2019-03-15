@@ -1,9 +1,22 @@
 #!/usr/bin/env bash
 source config
-sed -i "s/POD_CIDR/$POD_CIDR/g" bootstrap_master.sh
-sed -i "s/MASTER_IPADDR/$MASTER_IPADDR/g" bootstrap_master.sh bootstrap_node.sh
-sed -i "s/TOKEN/$TOKEN/g" bootstrap_master.sh bootstrap_node.sh
-
+cat << EOF > bootstrap_master.sh
+#!/usr/bin/env bash
+# DON'T CONFIGURE THIS FILE
+kubeadm init --apiserver-advertise-address=$MASTER_IPADDR --pod-network-cidr=$POD_CIDR --token $TOKEN
+sudo --user=vagrant mkdir -p /home/vagrant/.kube
+cp -i /etc/kubernetes/admin.conf /home/vagrant/.kube/config
+chown \$(id -u vagrant):\$(id -g vagrant) /home/vagrant/.kube/config
+mkdir -p \$HOME/.kube
+cp -i /etc/kubernetes/admin.conf \$HOME/.kube/config
+kubectl apply -f https://docs.projectcalico.org/v3.2/getting-started/kubernetes/installation/hosted/rbac-kdd.yaml
+kubectl apply -f https://docs.projectcalico.org/v3.2/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml
+EOF
+cat << EOF > bootstrap_node.sh
+#!/usr/bin/env bash
+# DON'T CONFIGURE THIS FILE
+kubeadm join $MASTER_IPADDR:6443 --token $TOKEN --discovery-token-unsafe-skip-ca-verification
+EOF
 cat << EOF > Vagrantfile
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
