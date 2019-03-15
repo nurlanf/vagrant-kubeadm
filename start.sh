@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 source config
+sed -i "s/POD_CIDR/$POD_CIDR/g" bootstrap_master.sh
+sed -i "s/MASTER_IPADDR/$MASTER_IPADDR/g" bootstrap_master.sh bootstrap_node.sh
+sed -i "s/TOKEN/$TOKEN/g" bootstrap_master.sh bootstrap_node.sh
+
 cat << EOF > Vagrantfile
 # -*- mode: ruby -*-
 # vi: set ft=ruby :

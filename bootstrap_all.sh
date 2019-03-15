@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source config
+# DON'T CONFIGURE THIS FILE
 swapoff -a
 sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 echo net/bridge/bridge-nf-call-ip6tables = 1 >> /etc/ufw/sysctl.conf
