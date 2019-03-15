@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+source config
+sed -i "s/VAGRANT_PROVIDER/$VAGRANT_PROVIDER/g" Vagrantfile
 echo "Deploying Vagrant machines"
 vagrant up
 vagrant status
