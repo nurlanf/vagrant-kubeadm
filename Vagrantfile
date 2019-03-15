@@ -1,3 +1,6 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
 ENV['VAGRANT_DEFAULT_PROVIDER'] = "libvirt"
 # Check required plugins
 REQUIRED_PLUGINS_LIBVIRT = %w(vagrant-libvirt)
@@ -22,20 +25,20 @@ Vagrant.configure("2") do |config|
     #master.vm.synced_folder '.', '/vagrant', :disabled => true
   end
 
-  config.vm.define kube-node1 do |node|
-    node.vm.hostname = kube-node1
-    node.vm.network private_network, ip: "192.168.50.5"
-    node.vm.provision :shell, :privileged => true, :path => bootstrap_node.sh
-    node.vm.box = generic/ubuntu1810
+  config.vm.define "kube-node1" do |node|
+    node.vm.hostname = "kube-node1"
+    node.vm.network "private_network", ip: "192.168.50.5"
+    node.vm.provision :shell, :privileged => true, :path => "bootstrap_node.sh"
+    node.vm.box = "generic/ubuntu1810"
     #node.vm.synced_folder '.', '/vagrant', :disabled => true
   end
 
 
-  config.vm.define kube-node2 do |node|
-    node.vm.hostname = kube-node2
-    node.vm.network private_network, ip: "192.168.50.6"
-    node.vm.provision :shell, :privileged => true, :path => bootstrap_node.sh
-    node.vm.box = generic/ubuntu1810
+  config.vm.define "kube-node2" do |node|
+    node.vm.hostname = "kube-node2"
+    node.vm.network "private_network", ip: "192.168.50.6"
+    node.vm.provision :shell, :privileged => true, :path => "bootstrap_node.sh"
+    node.vm.box = "generic/ubuntu1810"
     #node.vm.synced_folder '.', '/vagrant', :disabled => true
   end
 

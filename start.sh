@@ -45,7 +45,10 @@ echo "Updating kubeconfig"
 vagrant ssh kube-master -- cat /home/vagrant/.kube/config > $HOME/.kube/config-vagrant
 
 export  KUBECONFIG=$KUBECONFIG:$HOME/.kube/config:$HOME/.kube/config-vagrant
+if ! grep -q 'export  KUBECONFIG=$KUBECONFIG:$HOME/.kube/config:$HOME/.kube/config-vagrant' $HOME/.bashrc;
+then
 echo "export  KUBECONFIG=$KUBECONFIG:$HOME/.kube/config:$HOME/.kube/config-vagrant" >> $HOME/.bashrc
+fi
 echo "To use new deployed Kubernetes run"
 echo "# source $HOME/.bashrc"
 echo "# kubectl config use-context kubernetes-admin@kubernetes"

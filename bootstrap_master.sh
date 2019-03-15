@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source config
+source ./config
 kubeadm init --apiserver-advertise-address=$MASTER_IPADDR --pod-network-cidr=$POD_CIDR --token $TOKEN
 sudo --user=vagrant mkdir -p /home/vagrant/.kube
 cp -i /etc/kubernetes/admin.conf /home/vagrant/.kube/config
