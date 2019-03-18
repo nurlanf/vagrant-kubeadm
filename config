@@ -1,6 +1,11 @@
+# Configuration file for bootstrapping kubernetes cluster via Vagrant
+
 # Define Vagrant provider to "libvirt" or "virtualbox"
 VAGRANT_PROVIDER="libvirt"
+
+# Define node size
 NODE_SIZE=2
+
 # Define Master ip
 MASTER_IPADDR='192.168.50.4'
 
@@ -9,3 +14,6 @@ POD_CIDR='192.168.0.0/16'
 
 # Define Join token (in any case this will be valid only for 24h)
 TOKEN='qnq2lo.v0acaocjegmzf06c'
+
+# The duration before the token is automatically deleted (e.g. 1s, 2m, 3h). If set to '0', the token will never expire
+TOKEN-TTL='1h'
