@@ -17,7 +17,6 @@ echo ""
 sleep 1
 if ! command -v kubectl;
 then
-while true; do
   echo "Kubectl is not installed. You won't able to control your Kubernetes cluster from this machine without kubectl"
   read -p "Do you want to continue?(Not recommended): [y or n]" yn
   case $yn in
@@ -25,7 +24,6 @@ while true; do
       [Nn]* ) echo "Please install kubectl"; exit 1 ;;
       * ) echo "Please install kubectl"; echo "for installation visit https://kubernetes.io/docs/tasks/tools/install-kubectl/"; exit 1 ;;
   esac
-done
 else
 echo "Kubectl is installed, continuing ..."
 sleep 1
