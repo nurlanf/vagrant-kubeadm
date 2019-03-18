@@ -66,6 +66,7 @@ if ! grep -q 'export  KUBECONFIG=$KUBECONFIG:$HOME/.kube/config:$HOME/.kube/conf
 then
 echo "export  KUBECONFIG=$KUBECONFIG:$HOME/.kube/config:$HOME/.kube/config-vagrant" >> $HOME/.bashrc
 fi
-echo "To use new deployed Kubernetes run"
-echo "# source $HOME/.bashrc"
-echo "# kubectl config use-context kubernetes-admin@kubernetes"
+echo "RUN below commands to use new deployed kubernetes"
+echo ""
+echo "source $HOME/.bashrc"
+echo "kubectl config use-context kubernetes-admin@kubernetes"
