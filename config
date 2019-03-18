@@ -10,7 +10,7 @@ NODE_SIZE=2
 MASTER_IPADDR='192.168.50.4'
 
 # Define POD Network
-POD_CIDR='192.168.0.0/16'
+POD_CIDR='10.244.0.0/16'
 
 # Define Join token (in any case this will be valid only for 24h)
 TOKEN='qnq2lo.v0acaocjegmzf06c'
