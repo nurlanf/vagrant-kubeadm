@@ -45,8 +45,20 @@ cp -i /etc/kubernetes/admin.conf /home/vagrant/.kube/config
 chown \$(id -u vagrant):\$(id -g vagrant) /home/vagrant/.kube/config
 mkdir -p \$HOME/.kube
 cp -i /etc/kubernetes/admin.conf \$HOME/.kube/config
+EOF
+
+if [[ $CNI == calico ]];
+then
+cat << EOF >> bootstrap_master.sh
 kubectl apply -f https://docs.projectcalico.org/v3.2/getting-started/kubernetes/installation/hosted/rbac-kdd.yaml
 kubectl apply -f https://docs.projectcalico.org/v3.2/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml
+EOF
+sleep 1
+
+if [[ $CNI == flannel ]];
+then
+cat << EOF >> bootstrap_master.sh
+kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 EOF
 sleep 1
 

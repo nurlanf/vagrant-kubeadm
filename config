@@ -17,3 +17,6 @@ TOKEN='qnq2lo.v0acaocjegmzf06c'
 
 # The duration before the token is automatically deleted (e.g. 1s, 2m, 3h). If set to '0', the token will never expire
 TOKENTTL='1h'
+
+# Pod Network CNI
+CNI='flannel'
